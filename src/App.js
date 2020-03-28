@@ -62,7 +62,11 @@ class BooksApp extends React.Component {
                       <ol className="books-grid">
                         {this.state.books.filter((book) => book.shelf === 'currentlyReading').map((book) => (
                                 <li key={book.id}>
-                                  <Book bookCoverUrl={book.imageLinks.thumbnail} />
+                                  <Book
+                                      bookCoverUrl={book.imageLinks.thumbnail}
+                                      bookTitle={book.title}
+                                      bookAuthors={book.authors}
+                                  />
                                 </li>
                             )
                         )}

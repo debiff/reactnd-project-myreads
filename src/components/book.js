@@ -17,8 +17,14 @@ class Book extends Component{
                     />
                     <BookShelfChanger />
                 </div>
-                <div className="book-title">Oh, the Places You'll Go!</div>
-                <div className="book-authors">Seuss</div>
+                <div className="book-title">{bookTitle}</div>
+                {bookAuthors &&
+                    <div className="book-authors">{bookAuthors.map(author => {
+                        console.log(author)
+                        return(author + ', ')
+                    })}
+                    </div>
+                }
             </div>
         )
     }
