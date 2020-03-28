@@ -3,10 +3,17 @@ import React, { Component } from 'react'
 class Book extends Component{
 
     render() {
+        const {bookCoverUrl} = this.props
         return(
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 174, backgroundImage: 'url("http://books.google.com/books/content?id=1q_xAwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE712CA0cBYP8VKbEcIVEuFJRdX1k30rjLM29Y-dw_qU1urEZ2cQ42La3Jkw6KmzMmXIoLTr50SWTpw6VOGq1leINsnTdLc_S5a5sn9Hao2t5YT7Ax1RqtQDiPNHIyXP46Rrw3aL8&source=gbs_api")' }}></div>
+                    <div className="book-cover"
+                         style={{
+                             width: 128,
+                             height: 174,
+                             backgroundImage: `url(${bookCoverUrl}`
+                         }}
+                    />
                     <div className="book-shelf-changer">
                         <select>
                             <option value="move" disabled>Move to...</option>
