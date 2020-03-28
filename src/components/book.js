@@ -4,7 +4,7 @@ import BookShelfChanger from "./bookShelfChanger";
 class Book extends Component{
 
     render() {
-        const {bookCoverUrl} = this.props
+        const {bookCoverUrl, bookTitle, bookAuthors} = this.props
         return(
             <div className="book">
                 <div className="book-top">
