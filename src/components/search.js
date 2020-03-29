@@ -11,7 +11,10 @@ class Search extends Component{
         const query = e.target.value
         bookAPI.search(query).then((books) => {
             books = books.map((book) => {
-                book.shelf = 'none'
+                let bookInShelf = this.props.listBooks.find(b => b.id === book.id)
+                if(bookInShelf){
+                    book.shelf = bookInShelf.shelf;
+                }
                 return book
             })
             this.setState(

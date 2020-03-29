@@ -33,6 +33,15 @@ class BooksApp extends React.Component {
               }
           ))
           BookAPI.update(updated_book, new_shelf)
+      }else{
+          BookAPI.get(book_id).then((book) => {
+              BookAPI.update(book, new_shelf).then( () => {
+                  book.shelf = new_shelf
+                  this.setState((prevState) => ({
+                      books: prevState.books.concat(book)
+                  }))
+              })
+          })
       }
   }
 
@@ -41,6 +50,7 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path='/search' render={({history}) => (
             <Search
+                listBooks={this.state.books}
                 onClickHandler={() => (history.push('/'))}
                 onChangeShelf = {this.handleChangeShelf}
             />
