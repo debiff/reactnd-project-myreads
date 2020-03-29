@@ -18,12 +18,10 @@ class Book extends Component{
                     <BookShelfChanger />
                 </div>
                 <div className="book-title">{bookTitle}</div>
-                {bookAuthors &&
-                    <div className="book-authors">{bookAuthors.map(author => {
-                        return(author + ', ')
-                    })}
-                    </div>
-                }
+                <div className="book-authors">{bookAuthors.map(author => {
+                    return(author + ', ')
+                })}
+                </div>
             </div>
         )
     }
