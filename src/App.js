@@ -17,17 +17,22 @@ class BooksApp extends React.Component {
     })
   }
 
-  handleChangeShelf = (book_id, new_state) => {
-      this.setState((prevState) => (
-          {
-            books: prevState.books.map(book => {
-                if(book.id === book_id){
-                    book.shelf = new_state;
-                }
-                return book
-            })
-          }
-      ))
+  handleChangeShelf = (book_id, new_shelf) => {
+      const updated_book = this.state.books.find(b => b.id === book_id)
+
+      if(updated_book){
+          this.setState((prevState) => (
+              {
+                books: prevState.books.map(book => {
+                    if(book.id === book_id){
+                        book.shelf = new_shelf;
+                    }
+                    return book
+                })
+              }
+          ))
+          BookAPI.update(updated_book, new_shelf)
+      }
   }
   render() {
     return (
