@@ -22,7 +22,7 @@ class BooksApp extends React.Component {
           {
             books: prevState.books.map(book => {
                 if(book.id === book_id){
-                    book.state = new_state;
+                    book.shelf = new_state;
                 }
                 return book
             })
