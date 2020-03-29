@@ -4,7 +4,13 @@ import BookShelfChanger from "./bookShelfChanger";
 class Book extends Component{
 
     render() {
-        const {bookCoverUrl, bookTitle, bookAuthors} = this.props
+        const {
+            bookCoverUrl,
+            bookTitle,
+            bookAuthors,
+            bookId,
+            currentShelf,
+            onChangeShelf} = this.props
         return(
             <div className="book">
                 <div className="book-top">
@@ -15,7 +21,11 @@ class Book extends Component{
                              backgroundImage: `url(${bookCoverUrl}`
                          }}
                     />
-                    <BookShelfChanger />
+                    <BookShelfChanger
+                        currentShelf={currentShelf}
+                        bookId={bookId}
+                        onChangeShelf={onChangeShelf}
+                    />
                 </div>
                 <div className="book-title">{bookTitle}</div>
                 <div className="book-authors">{bookAuthors.map(author => {

@@ -17,6 +17,18 @@ class BooksApp extends React.Component {
     })
   }
 
+  handleChangeShelf = (book_id, new_state) => {
+      this.setState((prevState) => (
+          {
+            books: prevState.books.map(book => {
+                if(book.id === book_id){
+                    book.state = new_state;
+                }
+                return book
+            })
+          }
+      ))
+  }
   render() {
     return (
       <div className="app">
@@ -46,6 +58,7 @@ class BooksApp extends React.Component {
             <ListBooks
                 books={this.state.books}
                 onClickHandler={() => (history.push('/search'))}
+                onChangeShelf = {this.handleChangeShelf}
             />
         )} />
 
