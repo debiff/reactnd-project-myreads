@@ -26,7 +26,7 @@ class Search extends Component{
     }
 
     render() {
-        const {onClickHandler, onChangeShelf} = this.props
+        const {listBooks, onClickHandler, onChangeShelf} = this.props
         return(
             <div className="search-books">
                 <div className="search-books-bar">
@@ -47,19 +47,25 @@ class Search extends Component{
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {this.state.searched_books.length > 0 &&
-                        this.state.searched_books.map((book) => (
-                                <li key={book.id}>
-                                    <Book
-                                        bookCoverUrl={book.imageLinks.thumbnail}
-                                        bookTitle={book.title}
-                                        bookAuthors={book.authors}
-                                        bookId={book.id}
-                                        currentShelf={book.shelf}
-                                        onChangeShelf={onChangeShelf}
-                                    />
-                                </li>
-                            )
-                        )}
+                            this.state.searched_books.map((book) => {
+                                let bookInShelf
+                                bookInShelf = this.props.listBooks.find(b => b.id === book.id)
+                                if(bookInShelf)
+                                    book.shelf = bookInShelf.shelf;
+                                return(
+                                    <li key={book.id}>
+                                        <Book
+                                            bookCoverUrl={book.imageLinks.thumbnail}
+                                            bookTitle={book.title}
+                                            bookAuthors={book.authors}
+                                            bookId={book.id}
+                                            currentShelf={book.shelf}
+                                            onChangeShelf={onChangeShelf}
+                                        />
+                                    </li>
+                                )
+                            })
+                        }
                     </ol>
                 </div>
             </div>
