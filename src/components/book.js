@@ -28,10 +28,12 @@ class Book extends Component{
                     />
                 </div>
                 <div className="book-title">{bookTitle}</div>
-                <div className="book-authors">{bookAuthors.map(author => {
-                    return(author + ', ')
-                })}
-                </div>
+                {   bookAuthors &&
+                    <div className="book-authors">{bookAuthors.map(author => {
+                        return(author + ', ')
+                    })}
+                    </div>
+                }
             </div>
         )
     }
